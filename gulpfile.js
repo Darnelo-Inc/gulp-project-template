@@ -70,10 +70,10 @@ function html() {
         .pipe(plumber())
         .pipe(panini({
             root: 'src/',
-            layouts: 'src/tpl/layouts/',
-            partials: 'src/tpl/partials/',
-            helpers: 'src/tpl/helpers/',
-            data: 'src/tpl/data/'
+            layouts: 'src/templates/layouts/',
+            partials: 'src/templates/partials/',
+            helpers: 'src/templates/helpers/',
+            data: 'src/templates/data/'
         }))
         .pipe(dest(path.build.html))
         .pipe(browsersync.stream())
