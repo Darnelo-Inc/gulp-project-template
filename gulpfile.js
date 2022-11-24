@@ -33,14 +33,14 @@ let path = {
         html: "src/*.html",
         js: "src/assets/js/*.js",
         css: "src/assets/less/style.less",
-        images: "src/assets/img/**/*.{jpg, png, svg, gif, ico}"
+        images: "src/assets/img/**/*.{jpg,png,svg,gif,ico}"
     },
     
     watch: {
         html: "src/**/*.html",
         js: "src/assets/js/**/*.js",
         css: "src/assets/less/**/*.less",
-        images: "src/assets/img/**/*.{jpg, png, svg, gif, ico}"
+        images: "src/assets/img/**/*.{jpg,png,svg,gif,ico}"
     },
     
     clean: "./dist"
@@ -70,10 +70,10 @@ function html() {
         .pipe(plumber())
         .pipe(panini({
             root: 'src/',
-            layouts: 'src/tpl/layouts/',
-            partials: 'src/tpl/partials/',
-            helpers: 'src/tpl/helpers/',
-            data: 'src/tpl/data/'
+            layouts: 'src/templates/layouts/',
+            partials: 'src/templates/partials/',
+            helpers: 'src/templates/helpers/',
+            data: 'src/templates/data/'
         }))
         .pipe(dest(path.build.html))
         .pipe(browsersync.stream())
@@ -125,6 +125,7 @@ function images() {
     return src(path.src.images)
         .pipe(imagemin())
         .pipe(dest(path.build.images))
+	.pipe(browsersync.stream())
 }
 
 
